@@ -12,3 +12,8 @@ for i in firstmachine:
 rds = inventory.get_rds_hosts()
 for i in rds:
     print(i.get('name'))
+
+machine_ids = []
+machine_ids.append((machines[0]).get('id'))
+
+inventory.reset_machines()
