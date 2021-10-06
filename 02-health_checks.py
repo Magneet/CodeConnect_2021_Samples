@@ -1,19 +1,13 @@
 monitor = vmware_horizon.Monitor(url=hvconnectionobj.url, access_token=hvconnectionobj.access_token)
-print(monitor.connection_servers())
+print(json.dumps(monitor.connection_servers(), indent=2, default=str))
 cs = monitor.connection_servers()
-for i in cs:
-    for ii in i:
-        print(ii, '=', i[ii] )
+print(json.dumps(cs, indent=2, default=str))
 
 farms = monitor.farms()
-for i in farms:
-    print(i)
+print(json.dumps(farms, indent=2, default=str))
 
 vc = monitor.virtual_centers()
-for i in vc:
-    for ii in i:
-        if ii == "hosts":
-            hosts = i[ii]
+print(json.dumps(vc, indent=2, default=str))
 
 
 

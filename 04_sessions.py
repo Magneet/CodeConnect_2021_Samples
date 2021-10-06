@@ -1,6 +1,6 @@
 inventory=vmware_horizon.Inventory(url=hvconnectionobj.url, access_token=hvconnectionobj.access_token)
 sessions = inventory.get_sessions()
-print(sessions[0])
+print(json.dumps(sessions[0], indent=2, default=str))
 id = sessions[0].get('id')
 
 
@@ -16,9 +16,7 @@ filter1["value"] = "DISCONNECTED"
 filter["filters"].append(filter1)
 
 sessions = inventory.get_sessions(filter=filter)
-for i in sessions:
-    for ii in i:
-        print(ii, '=', i[ii] )
+print(json.dumps(sessions, indent=2, default=str))
 
 
 session_ids = []

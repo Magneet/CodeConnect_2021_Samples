@@ -22,6 +22,7 @@ external=vmware_horizon.External(url=hvconnectionobj.url, access_token=hvconnect
 inventory=vmware_horizon.Inventory(url=hvconnectionobj.url, access_token=hvconnectionobj.access_token)
 config=vmware_horizon.Config(url=hvconnectionobj.url, access_token=hvconnectionobj.access_token)
 
+
 with open('new_application.json') as f:
     data = json.load(f)
 
