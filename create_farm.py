@@ -22,6 +22,11 @@ external=vmware_horizon.External(url=hvconnectionobj.url, access_token=hvconnect
 inventory=vmware_horizon.Inventory(url=hvconnectionobj.url, access_token=hvconnectionobj.access_token)
 config=vmware_horizon.Config(url=hvconnectionobj.url, access_token=hvconnectionobj.access_token)
 
+farms = inventory.get_farms()
+for i in farms:
+    print(i["display_name"])
+
+
 with open('farm.json') as f:
     data = json.load(f)
 

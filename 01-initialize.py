@@ -1,4 +1,5 @@
-import requests, getpass, urllib, json
+import requests, getpass, urllib, json, os
+os.chdir('D:\GIT\CodeConnect_2021_Samples')
 
 import vmware_horizon
 
@@ -16,7 +17,7 @@ pw = getpass.getpass()
 
 hvconnectionobj = vmware_horizon.Connection(username = username,domain = domain,password = pw,url = url)
 hvconnectionobj.hv_connect()
-print("connected")
+
 
 
 
