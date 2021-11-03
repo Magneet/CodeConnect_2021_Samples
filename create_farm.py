@@ -21,7 +21,7 @@ monitor = obj=vmware_horizon.Monitor(url=hvconnectionobj.url, access_token=hvcon
 external=vmware_horizon.External(url=hvconnectionobj.url, access_token=hvconnectionobj.access_token)
 inventory=vmware_horizon.Inventory(url=hvconnectionobj.url, access_token=hvconnectionobj.access_token)
 config=vmware_horizon.Config(url=hvconnectionobj.url, access_token=hvconnectionobj.access_token)
-
+print("before")
 farms = inventory.get_farms()
 for i in farms:
     print(i["display_name"])
@@ -37,7 +37,7 @@ dcid = dcs[0]["id"]
 
 base_vms = external.get_base_vms(vcenter_id=vcid,datacenter_id=dcid,filter_incompatible_vms=True)
 
-base_vm = next(item for item in base_vms if item["name"] == "srv2019-p1-2021-07-18-16-16")
+base_vm = next(item for item in base_vms if item["name"] == "srv2019-p1-2021-09-08-16-00")
 basevmid=base_vm["id"]
 
 base_snapshots = external.get_base_snapshots(vcenter_id=vcid, base_vm_id=base_vm["id"])
@@ -119,6 +119,10 @@ data["session_settings"]["pre_launch_session_timeout_policy"] = "AFTER"
 data["type"] = "AUTOMATED"
 
 inventory.new_farm(farm_data=data)
+print("after")
+farms = inventory.get_farms()
+for i in farms:
+    print(i["display_name"])
 
 end=hvconnectionobj.hv_disconnect()
 print(end)
